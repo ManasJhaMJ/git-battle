@@ -193,7 +193,6 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
           color: #cdd6f4; /* Light text */
           padding: 1.5rem;
           position: relative;
-          aspect-ratio: 16 / 9; /* Landscape aspect ratio */
         }
         
         .card-header {
@@ -296,7 +295,7 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
         
         .winner-section {
           text-align: center;
-          margin-bottom: 1rem;
+          margin-bottom: 0;
         }
         
         

@@ -739,7 +739,7 @@ a:hover {
 }
 
 .summary::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 .summary::-webkit-scrollbar-thumb {
   background-color: #cba6f7;
@@ -977,6 +977,8 @@ button:hover, .download-button:hover {
   
   .battle-result {
     padding: 0.75rem;
+    margin-left: 0 !important;
+    padding: 0.5rem !important;
   }
   
   .battle-result h3 {
@@ -1085,4 +1087,24 @@ button:hover, .download-button:hover {
     width: 100%;
     margin-bottom: 10px;
   }
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-color);
+  color: white;
+  margin-top: 3rem;
+  font-size: 1rem;
+}
+
+footer p {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 1rem;
 }
