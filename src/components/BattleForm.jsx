@@ -6,7 +6,7 @@ import { analyzeProfiles } from '../services/geminiService';
 import player1 from '../assets/sprites/player1.gif';
 import player2 from '../assets/sprites/player2.gif';
 
-const BattleForm = ({ setBattleData, setLoading }) => {
+const BattleForm = ({ setBattleData, setLoading, loaderRef }) => {
   const [username1, setUsername1] = useState('');
   const [username2, setUsername2] = useState('');
   const [error, setError] = useState('');
@@ -26,6 +26,16 @@ const BattleForm = ({ setBattleData, setLoading }) => {
     
     setError('');
     setLoading(true);
+    
+    // Scroll to loader after a small delay to ensure it's rendered
+    setTimeout(() => {
+      if (loaderRef && loaderRef.current) {
+        loaderRef.current.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }, 10);
     
     try {
       // Fetch data from GitHub API

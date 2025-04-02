@@ -1,5 +1,5 @@
 // App.jsx
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Header from './components/Header';
 import BattleForm from './components/BattleForm';
 import BattleResults from './components/BattleResults';
@@ -11,12 +11,17 @@ import loader from './assets/sprites/loader.gif'
 function App() {
   const [battleData, setBattleData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const loaderRef = useRef(null); // Create a ref for the loader
   
   return (
     <div className="app">
       <Header />
-      {!battleData && <BattleForm setBattleData={setBattleData} setLoading={setLoading} />}
-      {loading && <div className="loading-container"><div className="loading">
+      {!battleData && <BattleForm 
+        setBattleData={setBattleData} 
+        setLoading={setLoading} 
+        loaderRef={loaderRef} // Pass the ref to BattleForm
+      />}
+      {loading && <div className="loading-container"><div className="loading" id='loader' ref={loaderRef}>
          <img src={loader} alt="" />
           <p>Loading...</p>
         </div></div>}
