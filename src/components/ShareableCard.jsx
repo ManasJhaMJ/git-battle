@@ -251,7 +251,7 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
         }
         
         .vs {
-          font-size: 1.8rem;
+          font-size: 1.3rem;
           font-weight: bold;
           background-color: rgba(249, 226, 175, 0.15);
           width: 50px;
@@ -266,7 +266,7 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
         .competitor h3 {
           margin: 0.75rem 0 0.5rem;
           color: #89b4fa; /* Blue accent */
-          font-size: 1.2rem;
+          font-size: 0.9rem;
         }
         
         .stats {

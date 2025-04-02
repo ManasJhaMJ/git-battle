@@ -3,10 +3,7 @@ const Header = () => {
     return (
       <header className="header">
         <nav>
-          <button className="active">Home</button>
-          <button>About</button>
-          <button>How It Works</button>
-          <button>Services</button>
+         
         </nav>
         
         <h1>GitHub Battle Arena</h1>
