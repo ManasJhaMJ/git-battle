@@ -1,4 +1,3 @@
-// ShareableCard.jsx
 import React, { useRef, useEffect, useState } from 'react';
 import html2canvas from 'html2canvas';
 
@@ -16,7 +15,7 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
       const canvas = await html2canvas(cardRef.current, {
         scale: 2, // Higher scale for better quality
         useCORS: true, // Allow cross-origin images
-        backgroundColor: '#282c34',
+        backgroundColor: '#1e1e2e', // Darker background
         logging: false
       });
       
@@ -87,42 +86,51 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
             <h2>GitHub Battle Results</h2>
           </div>
           
-          <div className="battle-competitors">
-            <div className="competitor">
-              <img 
-                src={user1.avatar_url} 
-                alt={user1.login} 
-                className={`avatar ${analysis.winner === user1.login ? 'winner' : 'loser'}`}
-              />
-              <h3>{user1.login}</h3>
-              <div className="stats">
-                <div className="stat">⭐ {analysis.user1.totalStars}</div>
-                <div className="stat">🍴 {analysis.user1.totalForks}</div>
+          <div className="battle-layout">
+            <div className="competitors-section">
+              <div className="battle-competitors">
+                <div className="competitor left">
+                  <img 
+                    src={user1.avatar_url} 
+                    alt={user1.login} 
+                    className={`avatar ${analysis.winner === user1.login ? 'winner' : 'loser'}`}
+                  />
+                  <h3>{user1.login}</h3>
+                  <div className="stats">
+                    <div className="stat">⭐ {analysis.user1.totalStars}</div>
+                    <div className="stat">🍴 {analysis.user1.totalForks}</div>
+                    <div className="stat">💻 {analysis.user1.totalCommits || 0}</div>
+                  </div>
+                </div>
+                
+                <div className="vs">VS</div>
+                
+                <div className="competitor right">
+                  <img 
+                    src={user2.avatar_url} 
+                    alt={user2.login} 
+                    className={`avatar ${analysis.winner === user2.login ? 'winner' : 'loser'}`}
+                  />
+                  <h3>{user2.login}</h3>
+                  <div className="stats">
+                    <div className="stat">⭐ {analysis.user2.totalStars}</div>
+                    <div className="stat">🍴 {analysis.user2.totalForks}</div>
+                    <div className="stat">💻 {analysis.user2.totalCommits || 0}</div>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div className="vs">VS</div>
-            
-            <div className="competitor">
-              <img 
-                src={user2.avatar_url} 
-                alt={user2.login} 
-                className={`avatar ${analysis.winner === user2.login ? 'winner' : 'loser'}`}
-              />
-              <h3>{user2.login}</h3>
-              <div className="stats">
-                <div className="stat">⭐ {analysis.user2.totalStars}</div>
-                <div className="stat">🍴 {analysis.user2.totalForks}</div>
+            <div className="battle-result">
+              <div className="winner-section">
+                <div className="winner-name"><span>👑</span>{analysis.winner}</div>
               </div>
-            </div>
-          </div>
-          
-          <div className="battle-result">
-            <h3>WINNER: {analysis.winner}</h3>
-            <div className="summary">
-              {analysis.summary.split('\n').slice(0, 3).map((line, index) => (
-                <p key={index}>{line}</p>
-              ))}
+              
+              <div className="summary">
+                {analysis.summary.split('\n').slice(0, 3).map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
+              </div>
             </div>
           </div>
           
@@ -173,104 +181,157 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
         
         .card-preview-container {
           width: 100%;
-          max-width: 600px;
+          max-width: 900px; /* Wider for landscape */
           margin-bottom: 1rem;
           border-radius: 12px;
           overflow: hidden;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
         }
         
         .card-content {
-          background-color: #282c34;
-          color: white;
+          background-color: #1e1e2e; /* Darker background */
+          color: #cdd6f4; /* Light text */
           padding: 1.5rem;
           position: relative;
+          aspect-ratio: 16 / 9; /* Landscape aspect ratio */
         }
         
         .card-header {
           text-align: center;
-          margin-bottom: 1.5rem;
-          border-bottom: 1px solid rgba(255,255,255,0.2);
+          margin-bottom: 1rem;
+          border-bottom: 1px solid rgba(205, 214, 244, 0.2);
           padding-bottom: 0.5rem;
+        }
+        
+        .card-header h2 {
+          color: #cba6f7; /* Purple accent */
+          margin: 0;
+        }
+        
+        .battle-layout {
+          display: flex;
+          height: calc(100% - 80px);
+        }
+        
+        .competitors-section {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
         
         .battle-competitors {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 1.5rem;
         }
         
         .competitor {
           display: flex;
           flex-direction: column;
           align-items: center;
-          width: 40%;
+          width: 45%;
         }
         
         .avatar {
-          width: 80px;
-          height: 80px;
+          width: 100px;
+          height: 100px;
           border-radius: 50%;
           object-fit: cover;
-          border: 3px solid #666;
+          border: 3px solid #6c7086; /* Muted border */
         }
         
         .avatar.winner {
-          border-color: gold;
-          box-shadow: 0 0 10px gold;
+          border-color: #f9e2af; /* Yellow gold */
+          box-shadow: 0 0 15px rgba(249, 226, 175, 0.5);
         }
         
         .avatar.loser {
-          filter: grayscale(80%);
+          filter: grayscale(70%);
         }
         
         .vs {
-          font-size: 1.5rem;
+          font-size: 1.8rem;
           font-weight: bold;
-          background-color: rgba(255,255,255,0.1);
-          width: 40px;
-          height: 40px;
+          background-color: rgba(249, 226, 175, 0.15);
+          width: 50px;
+          height: 50px;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
+          color: #f9e2af; /* Yellow gold */
+        }
+        
+        .competitor h3 {
+          margin: 0.75rem 0 0.5rem;
+          color: #89b4fa; /* Blue accent */
+          font-size: 1.2rem;
         }
         
         .stats {
           display: flex;
-          gap: 10px;
-          margin-top: 0.5rem;
+          flex-direction: column;
+          gap: 5px;
+          align-items: center;
         }
         
         .stat {
           font-size: 0.9rem;
+          background-color: rgba(137, 180, 250, 0.1); /* Light blue bg */
+          padding: 3px 10px;
+          border-radius: 12px;
         }
         
         .battle-result {
-          background-color: rgba(255,255,255,0.1);
-          padding: 1rem;
-          border-radius: 8px;
+          flex: 1;
+          margin-left: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          background-color: rgba(203, 166, 247, 0.1); /* Light purple bg */
+          padding: 1.2rem;
+          border-radius: 12px;
+          border-left: 3px solid #cba6f7; /* Purple border */
+        }
+        
+        .winner-section {
+          text-align: center;
           margin-bottom: 1rem;
         }
         
-        .battle-result h3 {
-          margin-top: 0;
-          color: gold;
-          text-align: center;
+        
+        .winner-name {
+          font-size: 1.3rem;
+          font-weight: bold;
+          color: #f9e2af; /* Yellow gold */
+          margin: 0;
+        }
+
+        .winner-name span {
+          font-family: 'Segoe UI Emoji', sans-serif;
+          font-size: 2rem;
         }
         
         .summary {
           font-size: 0.9rem;
           line-height: 1.4;
+          flex-grow: 1;
+          overflow-y: auto;
+          padding-right: 5px;
+        }
+        
+        .summary p {
+          margin: 0.5rem 0;
+          color: #cdd6f4; /* Light text */
+          text-align: justify;
         }
         
         .watermark {
           position: absolute;
           bottom: 10px;
           right: 10px;
-          font-size: 0.8rem;
-          opacity: 0.7;
+          opacity: 0.9;
+          color:rgb(255, 255, 255); /* Muted text */
         }
         
         .action-buttons {
@@ -278,11 +339,12 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
           flex-wrap: wrap;
           gap: 10px;
           justify-content: center;
+          margin-top: 1rem;
         }
         
         button, .download-button {
           padding: 0.75rem 1rem;
-          border-radius: 6px;
+          border-radius: 8px;
           border: none;
           cursor: pointer;
           font-weight: bold;
@@ -292,37 +354,37 @@ const ShareableCard = ({ battleData, websiteUrl }) => {
         }
         
         .generate-button {
-          background-color: #4caf50;
-          color: white;
+          background-color: #a6e3a1; /* Green */
+          color: #1e1e2e;
         }
         
         .generate-button:hover {
-          background-color: #45a049;
+          background-color: #94e2cd;
         }
         
         .generate-button:disabled {
-          background-color: #cccccc;
+          background-color: #6c7086;
           cursor: not-allowed;
         }
         
         .share-button.twitter {
-          background-color: #1da1f2;
-          color: white;
+          background-color: #89b4fa; /* Blue */
+          color: #1e1e2e;
         }
         
         .share-button.general {
-          background-color: #6c5ce7;
-          color: white;
+          background-color: #cba6f7; /* Purple */
+          color: #1e1e2e;
         }
         
         .download-button {
-          background-color: #2d3436;
-          color: white;
+          background-color: #f9e2af; /* Yellow */
+          color: #1e1e2e;
         }
         
         button:hover, .download-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         
         button:disabled {

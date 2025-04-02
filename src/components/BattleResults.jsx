@@ -10,7 +10,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
   const [showShareCard, setShowShareCard] = useState(false);
   
   // Your website URL for the watermark
-  const websiteUrl = "github-battle.yourdomain.com";
+  const websiteUrl = "GitBattleHub.Vercel.App";
   
   useEffect(() => {
     // Highlight code when component mounts or when summary changes
@@ -58,21 +58,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
             <h3>{analysis.winner === user1.login ? user1.login : user2.login}</h3>
             <div className="sad-face">😢</div>
             <h3>{analysis.winner === user1.login ? user2.login : user1.login}</h3>
-          </div>
-          
-          <button 
-            className="share-toggle-button"
-            onClick={() => setShowShareCard(!showShareCard)}
-          >
-            {showShareCard ? 'Hide Share Options' : 'Share Results'}
-          </button>
-          
-          {showShareCard && (
-            <ShareableCard 
-              battleData={battleData} 
-              websiteUrl={websiteUrl} 
-            />
-          )}
+          </div>      
         </div>
         
         <div className="profile">
@@ -103,6 +89,20 @@ const BattleResults = ({ battleData, resetBattle }) => {
           </div>
         </div>
       </div>
+
+      <button 
+            className="share-toggle-button gradient-border"
+            onClick={() => setShowShareCard(!showShareCard)}
+          >
+            {showShareCard ? 'Hide Share Options' : 'Generate Results'}
+          </button>
+          
+          {showShareCard && (
+            <ShareableCard 
+              battleData={battleData} 
+              websiteUrl={websiteUrl} 
+            />
+          )}
       
       <button className="battle-again-button" onClick={resetBattle}>
         Battle Again
