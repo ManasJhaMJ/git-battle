@@ -30,6 +30,24 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  scrollbar-width: 5px; /* For Firefox */
+  scrollbar-color: #cba6f7 rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cba6f7;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: 'SMW Text NC', sans-serif;
@@ -38,8 +56,77 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--dark-color);
   text-transform: uppercase;
 }
+
+body {
+  position: relative;
+}
+
+.bg-1 {
+  position: absolute;
+  z-index: -10;
+  top: 60%;
+  left: 2%;
+  height: 45px;
+}
+
+.bg-2 {
+  position: absolute;
+  z-index: -10;
+  top: 14%;
+  right: 9%;
+  height: 45px;
+}
+
+.bg-3 {
+  position: absolute;
+  z-index: -10;
+  top: 14%;
+  left: 9%;
+  height: 45px;
+}
+
+.bg-4 {
+  position: absolute;
+  z-index: -10;
+  bottom: 19%;
+  left: 14%;
+  height: 45px;
+}
+
+.bg-5 {
+  position: absolute;
+  z-index: -10;
+  top: 40%;
+  left: 18%;
+  height: 45px;
+}
+
+.bg-6 {
+  position: absolute;
+  z-index: -10;
+  top: 40%;
+  right: 18%;
+  height: 45px;
+}
+
+.bg-7 {
+  position: absolute;
+  z-index: -10;
+  bottom: 19%;
+  right: 14%;
+  height: 45px;
+}
+
+.bg-8 {
+  position: absolute;
+  z-index: -10;
+  top: 60%;
+  right: 2%;
+  height: 45px;
+}
+
 #heading{
-  margin-top: 40px;
+  margin-top: 2rem;
 }
 
 @keyframes blink {
@@ -486,11 +573,15 @@ a:hover {
   flex-direction: column;
   gap: 20px;
   margin-bottom: 30px;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: url(../assets/sprites/batman-vs-superman.gif) no-repeat center center;
+  background-size: cover;
 }
 
 .profile {
   flex: 1;
-  background-color: var(--card-bg);
+  background-color: transparent;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -543,7 +634,8 @@ a:hover {
 }
 
 .score-item {
-  background-color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
   border-radius: 4px;
   padding: 8px;
   text-align: center;
@@ -577,20 +669,22 @@ a:hover {
 
 .winner-tag {
   position: absolute;
-  bottom: -10px;
+  bottom: -20px;
   left: 0;
   right: 0;
   background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   color: white;
   padding: 3px 0;
   font-size: 0.8rem;
   font-weight: bold;
+  border-radius: 0 0 10px 10px ;
   text-transform: uppercase;
 }
 
 .battle-summary {
   flex: 1.5;
-  background-color: var(--card-bg);
+  background-color: transparent;
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -762,23 +856,6 @@ a:hover {
 .avatar.loser {
   filter: grayscale(80%);
 }
-html, body {
-  scrollbar-width: 10px; /* For Firefox */
-  scrollbar-color: #cba6f7 rgba(255, 255, 255, 0.1);
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #cba6f7;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0.1);
-}
 
 .summary::-webkit-scrollbar {
   width: 4px;
@@ -849,7 +926,15 @@ html, body {
 }
 
  /* Media queries for responsive design */
- @media (max-width: 768px) {
+ @media (max-width: 769px) {
+
+  .profiles-container {
+    background-image: none;
+  }
+
+  .battle-summary, .profile {
+    background-color: var(--card-bg);
+  }
 
   .shareable-card-container {
     width: 100%;
@@ -902,6 +987,17 @@ html, body {
   
   .watermark {
     font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 769px) {
+
+  .profiles-container {
+    background: url(../assets/sprites/batman-vs-superman.gif) no-repeat center center;
+  }
+
+  .battle-summary, .profile {
+    background-color: transparent;
   }
 }
 
@@ -1077,7 +1173,7 @@ button:hover, .download-button:hover {
 }
 
 /* Media Queries for Responsive Design */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .app {
     padding: 0 2rem;
   }
@@ -1134,7 +1230,7 @@ button:hover, .download-button:hover {
 footer {
   text-align: center;
   padding: 20px 0;
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
   color: white;
   margin-top: 3rem;
   font-size: 1rem;
