@@ -16,6 +16,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
   const websiteUrl = "GitBattleHub.Vercel.App";
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     let i = 0;
     const txt = analysis.summary || "No Summary available";
     setTypedText(""); 
