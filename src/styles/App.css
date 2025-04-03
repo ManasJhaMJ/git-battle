@@ -1139,6 +1139,34 @@ button:hover, .download-button:hover {
     padding: 0.6rem 0.8rem;
     font-size: 0.9rem;
   }
+  .bg-2{
+   top: 11%;
+  }
+
+  .bg-3{
+    top: 11%;
+  }
+}
+
+.audio-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2d3436;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  animation: pulse 1.5s infinite;
+}
+
+.audio-button:hover {
+  background-color: #6a3ecf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations */
