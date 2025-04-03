@@ -2,22 +2,22 @@ import React, { useEffect, useRef, useState } from 'react';
 import ProfileCard from './ProfileCard';
 import ScoreCounter from './ScoreCounter';
 import ShareableCard from './ShareableCard';
-import Prism from 'prismjs';
-import 'prismjs/themes/prism.css'; // Optional: Import a Prism theme for styling
+
+import battle from '../assets/sprites/batman-vs-superman.gif';
+
 
 const BattleResults = ({ battleData, resetBattle }) => {
   const { user1, user2, analysis } = battleData;
   const codeRef = useRef(null);
   const [showShareCard, setShowShareCard] = useState(false);
   const [typedText, setTypedText] = useState("");
-  const iRef = useRef(0); // Store index without triggering re-renders
+  const iRef = useRef(0); 
 
   // Your website URL for the watermark
   const websiteUrl = "GitBattleHub.Vercel.App";
 
   useEffect(() => {
-    // eslint-disable-next-line no-unused-vars
-    let i = 0;
+
     const txt = analysis.summary || "No Summary available";
     setTypedText(""); 
     iRef.current = 0;
@@ -34,13 +34,6 @@ const BattleResults = ({ battleData, resetBattle }) => {
     return () => clearInterval(interval);
   }, [analysis.summary]);
 
-  useEffect(() => {
-    // Highlight code when component mounts or when summary changes
-    if (codeRef.current) {
-      Prism.highlightElement(codeRef.current);
-    }
-  }, [analysis.summary]);
-
   return (
     <div className="battle-results">
       <div className="profiles-container">
@@ -50,6 +43,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
             <ScoreCounter 
               label="REPO" 
               value={user1.public_repos} 
+              icon="📚" 
               isWinner={user1.public_repos > user2.public_repos} 
             />
             <ScoreCounter 
@@ -61,6 +55,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
             <ScoreCounter 
               label="Languages" 
               value={analysis.user1.languages.length} 
+              icon="🗣️" 
               isWinner={analysis.user1.languages.length > analysis.user2.languages.length} 
             />
             <ScoreCounter 
@@ -89,6 +84,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
             <ScoreCounter 
               label="REPO" 
               value={user2.public_repos} 
+              icon="📚" 
               isWinner={user2.public_repos > user1.public_repos} 
             />
             <ScoreCounter 
@@ -100,6 +96,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
             <ScoreCounter 
               label="Languages" 
               value={analysis.user2.languages.length} 
+              icon="🗣️"
               isWinner={analysis.user2.languages.length > analysis.user1.languages.length} 
             />
             <ScoreCounter 

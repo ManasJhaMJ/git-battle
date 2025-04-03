@@ -8,7 +8,7 @@ const Header = () => {
         </nav>
         
         <h1 id="heading">GitHub Battle Arena</h1>
-        <p>Enter two GitHub usernames and let the battle begin!</p>
+        <p>Enter GitHub usernames and let the battle begin!</p>
       </header>
     );
   };
