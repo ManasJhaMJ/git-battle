@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import './styles/App.css';
 import './styles/BattleTheme.css';
 import loader from './assets/sprites/loader.gif'
-import BattleBg from "./components/battleBg";
+import BattleBg from './components/BattleBg';
 
 function App() {
   const [battleData, setBattleData] = useState(null);

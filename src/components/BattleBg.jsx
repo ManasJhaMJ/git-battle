@@ -1,4 +1,3 @@
-import React from 'react'
 import bg1 from '../assets/bg/1.png'
 import bg2 from '../assets/bg/2.png'
 import bg3 from '../assets/bg/3.png'
