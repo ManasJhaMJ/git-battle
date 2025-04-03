@@ -38,6 +38,31 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--dark-color);
   text-transform: uppercase;
 }
+#heading{
+  margin-top: 40px;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.loading p {
+  animation: blink 1s infinite ease-in-out;
+}
+/* @keyframes dots {
+  0% { content: "Loading"; }
+  33% { content: "Loading."; }
+  66% { content: "Loading.."; }
+  100% { content: "Loading..."; }
+}
+
+.loading p::after {
+  content: "Loading";
+  animation: dots 1.5s infinite steps(1);
+} */
+
 
 .gradient-border {
   z-index: 1;
@@ -277,7 +302,7 @@ a:hover {
 /* Header styles */
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1px;
   padding: 15px 10px;
   color: var(--text-color);
 }
@@ -1051,7 +1076,7 @@ button:hover, .download-button:hover {
   
   .header {
     padding: 20px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
   }
   
   .battle-form {

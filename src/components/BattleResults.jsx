@@ -1,24 +1,45 @@
-// BattleResults.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import ProfileCard from './ProfileCard';
 import ScoreCounter from './ScoreCounter';
 import ShareableCard from './ShareableCard';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css'; // Optional: Import a Prism theme for styling
 
 const BattleResults = ({ battleData, resetBattle }) => {
   const { user1, user2, analysis } = battleData;
   const codeRef = useRef(null);
   const [showShareCard, setShowShareCard] = useState(false);
-  
+  const [typedText, setTypedText] = useState("");
+  const iRef = useRef(0); // Store index without triggering re-renders
+
   // Your website URL for the watermark
   const websiteUrl = "GitBattleHub.Vercel.App";
-  
+
+  useEffect(() => {
+    let i = 0;
+    const txt = analysis.summary || "No Summary available";
+    setTypedText(""); 
+    iRef.current = 0;
+
+    const interval = setInterval(() => {
+      if (iRef.current < txt.length) {
+        setTypedText((prev) => prev + txt.charAt(iRef.current));
+        iRef.current += 1;
+      } else {
+        clearInterval(interval);
+      }
+    }, 40);
+
+    return () => clearInterval(interval);
+  }, [analysis.summary]);
+
   useEffect(() => {
     // Highlight code when component mounts or when summary changes
     if (codeRef.current) {
       Prism.highlightElement(codeRef.current);
     }
   }, [analysis.summary]);
-  
+
   return (
     <div className="battle-results">
       <div className="profiles-container">
@@ -52,7 +73,7 @@ const BattleResults = ({ battleData, resetBattle }) => {
         
         <div className="battle-summary">
           <h2>BATTLE SUMMARY</h2>
-          <p>{analysis.summary}</p>
+          <p>{typedText}</p>
           <div className="result-container">
             <div className="trophy">🏆</div>
             <h3>{analysis.winner === user1.login ? user1.login : user2.login}</h3>

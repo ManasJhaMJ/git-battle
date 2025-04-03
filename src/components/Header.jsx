@@ -7,7 +7,7 @@ const Header = () => {
          <a href="https://github.com/ManasJhaMJ/git-battle" target="_blank" >⭐ on GitHub</a>
         </nav>
         
-        <h1>GitHub Battle Arena</h1>
+        <h1 id="heading">GitHub Battle Arena</h1>
         <p>Enter two GitHub usernames and let the battle begin!</p>
       </header>
     );
