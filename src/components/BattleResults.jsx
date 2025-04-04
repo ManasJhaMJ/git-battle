@@ -3,8 +3,6 @@ import ProfileCard from './ProfileCard';
 import ScoreCounter from './ScoreCounter';
 import ShareableCard from './ShareableCard';
 
-import battle from '../assets/sprites/batman-vs-superman.gif';
-
 
 const BattleResults = ({ battleData, resetBattle }) => {
   const { user1, user2, analysis } = battleData;
