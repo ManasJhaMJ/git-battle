@@ -1,248 +1,257 @@
 /* Base styles */
 :root {
-    --primary-color: #2ecc71;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --text-color: #333;
-    --bg-color: #f9f9f9;
-    --card-bg: #fff;
-    --border-color: #eaeaea;
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-  
-  /* Layout */
-  .app-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--card-bg);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  .nav-logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-decoration: none;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  
-  .nav-links a:hover {
-    color: var(--primary-color);
-  }
-  
-  .auth-section .login-button, 
-  .auth-section .logout-button {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .login-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-  }
-  
-  .logout-button {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .username {
-    font-weight: 500;
-  }
-  
-  /* Home page */
-  .home-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-  
-  .hero-section {
-    text-align: center;
-    padding: 3rem 1rem;
-  }
-  
-  .hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    padding: 0.8rem 1.8rem;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    transition: background-color 0.2s;
-  }
-  
-  .cta-button:hover {
-    background-color: #27ae60;
-  }
-  
-  .features-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .feature {
-    background-color: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .feature h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-  }
-  
-  /* Battle Code Component */
-  .battle-code-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .battle-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  
-  .create-battle, .join-battle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .create-button, .cancel-button {
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: none;
-  }
-  
-  .create-button {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .cancel-button {
-    background-color: var(--accent-color);
-    color: white;
-  }
-  
-  .code-input {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .code-input input {
-    padding: 0.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 1rem;
-    width: 150px;
-    text-align: center;
-    letter-spacing: 2px;
-  }
-  
-  .code-input button {
-    padding: 0.5rem 1rem;
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .waiting-container {
-    text-align: center;
-  }
-  
-  .battle-code-display {
-    margin: 2rem 0;
-  }
-  
-  .battle-code-display .code {
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 4px;
-    color: var(--primary-color);
-    padding: 1rem;
-    border: 2px dashed var(--border-color);
-    border-radius: 4px;
-    display: inline-block;
-  }
-  
-  .error-message {
-    color: var(--accent-color);
-    margin-top: 1rem;
-    text-align: center;
-  }
-  
-  /* Leaderboard */
-  .leaderboard-container {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    margin-top: 3rem;
-    text-align: center;
-    }
+  --primary-color: #2ecc71;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --text-color: #333;
+  --bg-color: #f9f9f9;
+  --card-bg: #fff;
+  --border-color: #eaeaea;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.auth-section .login-button,
+.auth-section .logout-button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.login-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.username {
+  font-weight: 500;
+}
+
+/* Home page */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  transition: background-color 0.2s;
+}
+
+.cta-button:hover {
+  background-color: #27ae60;
+}
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feature h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+}
+
+/* Battle Code Component */
+.battle-code-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.battle-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.create-battle,
+.join-battle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-button,
+.cancel-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.create-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.cancel-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.code-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.code-input input {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 150px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.code-input button {
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.waiting-container {
+  text-align: center;
+}
+
+.battle-code-display {
+  margin: 2rem 0;
+}
+
+.battle-code-display .code {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: var(--primary-color);
+  padding: 1rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.error-message {
+  color: var(--accent-color);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Leaderboard */
+.leaderboard-container {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.loading-image {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+}
