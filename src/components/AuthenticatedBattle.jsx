@@ -5,7 +5,6 @@ import BattleCode from './BattleCode';
 import BattleResults from './BattleResults';
 import { fetchUserData } from '../services/githubService';
 import { analyzeProfiles } from '../services/geminiService';
-import '../styles/Authenticatedbattle.module.css';
 import loadingImg from '../assets/sprites/loader.gif';
 
 const AuthenticatedBattle = () => {
