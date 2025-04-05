@@ -129,9 +129,10 @@ const generateGeminiPrompt = (user1, user2, user1Stats, user2Stats) => {
     - Followers: ${user2.followers}
     - Bio: ${user2.bio || 'No bio available'}
     
-    Write a funny, engaging (7-9 lines only) brutal roast of both GitHub profile (more of loser, less of winner), comparing them and clearly stating which one is the winner based on their stats. Include which profile is more consistent, popular, has quality over quantity and contributes more. The analysis should be entertaining but also insightful. Be sure to clearly state the winner. Make sure to use terms like lmao, L, get better, boso, cope harder and other brutal derogatory insulting terms.
-    Do not use markdown or any other formatting. Just plain text. Keep the language simple and easy to understand. Do NOT make spelling mistakes.
-    Use emojis as well. Do not use "User 1" or "User 2" in the response. Use their usernames instead.
+    Write a funny, engaging (7-9 lines only) brutal roast of losing GitHub profile, comparing them and clearly stating which one is the winner based on their stats. Include which profile is more consistent, popular, has quality over quantity and contributes more. The analysis should be entertaining but also insightful. Be sure to clearly state the winner. Make sure to use terms like lmao, L, get better, boso, cope harder and other brutal derogatory insulting terms.
+    Do not use markdown or any other formatting. Just plain text. Keep the language simple and easy to understand.
+    Rate the loser and the winner out of 100.
+    Use emojis as well. Do not use "User 1" or "User 2" in the response, Use their usernames instead.
   `;
 };
 
