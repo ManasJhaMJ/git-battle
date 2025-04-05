@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, set, onValue, remove, get } from 'firebase/database';
 import { useGitHubAuth } from './GitHubAuth';
+import "../styles/AuthenticatedBattle.css"
 
 // Function to generate a random 5-digit battle code
 const generateBattleCode = () => {
@@ -85,12 +86,12 @@ const BattleCode = ({ onBattleStart }) => {
       setError('You must be logged in to join a battle');
       return;
     }
-    
+  
     if (!joiningCode || joiningCode.length !== 5) {
       setError('Please enter a valid 5-digit battle code');
       return;
     }
-
+  
     try {
       const battleRef = ref(db, `battles/codes/${joiningCode}`);
       
@@ -102,17 +103,17 @@ const BattleCode = ({ onBattleStart }) => {
         setError('Battle code not found');
         return;
       }
-      
+  
       if (battleData.creator.uid === user.uid) {
         setError('You cannot battle yourself');
         return;
       }
-      
+  
       if (battleData.status !== 'waiting') {
         setError('This battle is no longer available');
         return;
       }
-      
+  
       // Update battle with opponent info
       await set(battleRef, {
         ...battleData,
@@ -122,15 +123,36 @@ const BattleCode = ({ onBattleStart }) => {
         },
         status: 'ready'
       });
-      
-      // Battle will be started by the creator's listener
-      
+  
+      // 🔥 Add a listener so the joiner can also detect when battle starts
+      onValue(battleRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data && data.opponent && data.status === 'ready') {
+          onBattleStart({
+            player1: {
+              uid: data.creator.uid,
+              username: data.creator.username
+            },
+            player2: {
+              uid: data.opponent.uid,
+              username: data.opponent.username
+            },
+            battleId: joiningCode
+          });
+  
+          // Optional cleanup
+          setTimeout(() => {
+            remove(battleRef);
+          }, 5000);
+        }
+      });
+  
     } catch (error) {
       console.error("Error joining battle:", error);
       setError('Failed to join battle');
     }
   };
-
+  
   // Cancel a battle you created
   const cancelBattle = async () => {
     if (battleCode) {

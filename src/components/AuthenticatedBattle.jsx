@@ -5,6 +5,7 @@ import BattleCode from './BattleCode';
 import BattleResults from './BattleResults';
 import { fetchUserData } from '../services/githubService';
 import { analyzeProfiles } from '../services/geminiService';
+import '../styles/AuthenticatedBattle.css'
 
 const AuthenticatedBattle = () => {
   const { user, githubUsername, loading, login } = useGitHubAuth();
@@ -114,8 +115,8 @@ const AuthenticatedBattle = () => {
     <div className="authenticated-battle">
       {battleState === 'idle' && (
         <div className="battle-setup">
-          <h2>Ready to Battle, {githubUsername}?</h2>
-          <p>Create a battle code to challenge another developer or join an existing battle</p>
+          <h2 className='retero-title'>Ready to Battle, {githubUsername}?</h2>
+          <p className='retro-desc'>Create a battle code to challenge another developer or join an existing battle</p>
           <BattleCode onBattleStart={handleBattleStart} />
         </div>
       )}
