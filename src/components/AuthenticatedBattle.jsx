@@ -6,6 +6,7 @@ import BattleResults from './BattleResults';
 import { fetchUserData } from '../services/githubService';
 import { analyzeProfiles } from '../services/geminiService';
 import '../styles/AuthenticatedBattle.css'
+import loadingImg from '../assets/sprites/loader.gif';
 
 const AuthenticatedBattle = () => {
   const { user, githubUsername, loading, login } = useGitHubAuth();
@@ -127,6 +128,7 @@ const AuthenticatedBattle = () => {
           <div className="loading-animation">
             <div className="spinner"></div>
           </div>
+          <img src={loadingImg} alt="Loading" className="loading-image" />
           <p>Comparing repositories, languages, and contributions...</p>
         </div>
       )}
