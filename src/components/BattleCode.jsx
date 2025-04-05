@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, set, onValue, remove, get } from 'firebase/database';
 import { useGitHubAuth } from './GitHubAuth';
-import "../styles/AuthenticatedBattle.css"
 
 // Function to generate a random 5-digit battle code
 const generateBattleCode = () => {

@@ -312,6 +312,12 @@ body {
   text-align: center;
 }
 
+.waiting-container h3 {
+  color: #00f2ff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
 .create-button,
 .cancel-button,
 .code-input button {
